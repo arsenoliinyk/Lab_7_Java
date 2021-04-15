@@ -100,25 +100,17 @@ public class Printer {
         this.connectionType = connectionType;
     }
 
-    public Printer() { }
-
-
-    public Printer(String country, int size, String brand, int guarantee) {
-        this.country = country;
-        this.size = size;
-        this.brand = brand;
-        this.guarantee = guarantee;
-    }
-
     public Printer(String name, int pace, int price, String country, int size, String brand, int guarantee, int weight,
                    String color, String connectionType) {
-        this(country, size, brand, guarantee);
-        this.name = name;
-        this.pace = pace;
-        this.price = price;
-        this.weight = weight;
-        this.color = color;
-        this.connectionType = connectionType;
+        resetValues(name, pace, price, country, size, brand, guarantee, weight, color, connectionType);
+    }
+
+    public Printer(String country, int size, String brand, int guarantee) {
+        this(null, 0, 0,country, size, brand, guarantee, 0, null, null);
+    }
+
+    public Printer() {
+        this(null, 0, 0,null, 0, null, 0, 0, null, null);
     }
 
     @Override
