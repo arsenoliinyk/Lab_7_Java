@@ -11,7 +11,8 @@ public class Printer {
     private int guarantee;
     private int weight;
 
-    private static int yearOfManufacture;
+    private static final int yearOfManufacture = 1970;
+
     protected String color;
     protected String connectionType;
 
@@ -83,10 +84,6 @@ public class Printer {
         return yearOfManufacture;
     }
 
-    public static void setYearOfManufacture(int yearOfManufacture) {
-        Printer.yearOfManufacture = yearOfManufacture;
-    }
-
     public String getColor() {
         return color;
     }
@@ -113,14 +110,12 @@ public class Printer {
         this.guarantee = guarantee;
     }
 
-    public Printer(String name, int pace, int price, String country, int size, String brand, int guarantee, int weight, String color, String connectionType) {
+    public Printer(String name, int pace, int price, String country, int size, String brand, int guarantee, int weight,
+                   String color, String connectionType) {
+        this(country, size, brand, guarantee);
         this.name = name;
         this.pace = pace;
         this.price = price;
-        this.country = country;
-        this.size = size;
-        this.brand = brand;
-        this.guarantee = guarantee;
         this.weight = weight;
         this.color = color;
         this.connectionType = connectionType;
@@ -128,20 +123,20 @@ public class Printer {
 
     @Override
     public String toString() {
-        return "Printer:\n" +
-                "   name = " + name +
-                ", pace = " + pace + " p/m" +
-                ", price = " + price +" $"+
-                ", country = " + country +
-                ", size = " + size +" litres"+
-                ", brand = " + brand +
-                ", guarantee = " + guarantee+" years" +
-                ", weight = " + weight +" kg"+
-                ", color = " + color +
-                ", connectionType = " + connectionType;
+        return "Printer:" + getName() +
+                "\nname = " + getName() +
+                ", pace = " + getPace() + " p/m" +
+                ", price = " + getPrice() +" $"+
+                ", country = " + getCountry() +
+                ", size = " + getSize() +" litres"+
+                ", brand = " + getBrand() +
+                ", guarantee = " + getGuarantee() +" years" +
+                ", weight = " + getWeight() +" kg"+
+                ", color = " + getColor() +
+                ", connectionType = " + getConnectionType();
     }
 
-    public void printStaticYearOfManufacture(){
+    public static void printStaticYearOfManufacture(){
         System.out.println(yearOfManufacture);
     }
 
@@ -149,7 +144,8 @@ public class Printer {
         System.out.println(yearOfManufacture);
     }
 
-    public void resetValues(String name, int pace, int price, String country, int size, String brand, int guarantee, int weight, String color, String connectionType) {
+    public void resetValues(String name, int pace, int price, String country, int size, String brand, int guarantee,
+                            int weight, String color, String connectionType) {
         this.name = name;
         this.pace = pace;
         this.price = price;
